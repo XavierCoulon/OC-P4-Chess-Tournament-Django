@@ -1,4 +1,6 @@
+from django.core.validators import MinValueValidator
 from django.db import models
+from django.urls import reverse
 
 
 class Gender(models.Model):
@@ -8,11 +10,13 @@ class Gender(models.Model):
 class Player(models.Model):
 	first_name = models.CharField(unique=True, max_length=128, blank=False)
 	last_name = models.CharField(unique=True, max_length=128, blank=False)
-	ranking = models.IntegerField(unique=True, )
+	ranking = models.PositiveIntegerField(unique=True, validators=[MinValueValidator(1)])
 	birth_date = models.DateField(blank=False)
 	gender = models.ForeignKey(to=Gender, on_delete=models.PROTECT)
 	description = models.CharField(unique=True, max_length=128, blank=False)
 
+	def get_absolute_url(self):
+		return reverse("players:home")
+
 	def __str__(self):
-		""" Used to print a Player object """
-		print(f"Player: {self.first_name} {self.last_name}  / ranking: {self.ranking}")
+		return self.first_name

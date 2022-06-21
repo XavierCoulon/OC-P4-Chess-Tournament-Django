@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Affichage Tournois</h1>
+    {% for tournament in tournaments %}
+        <h2>{{ tournament.name }} {{ tournament.location }}</h2>
+        {% if tournament.player.all %}
+            {% for player in tournament.player.all %}
+                <h3>{{ player.first_name }} {{ player.last_name }}</h3>
+            {% endfor %}
+        {% else %}
+            <p> Pas de joueur affecté</p>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

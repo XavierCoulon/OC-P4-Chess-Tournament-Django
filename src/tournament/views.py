@@ -1,3 +1,17 @@
-from django.shortcuts import render
+from django.views.generic import ListView, CreateView, UpdateView
+from tournament.models import Tournament
 
-# Create your views here.
+
+class TournamentView(ListView):
+	model = Tournament
+	context_object_name = "tournaments"
+
+
+class TournamentCreate(CreateView):
+	model = Tournament
+	fields = "__all__"
+
+
+class TournamentUpdate(UpdateView):
+	model = Tournament
+	fields = "__all__"

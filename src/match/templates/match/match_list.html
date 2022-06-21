@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Affichage Matches</h1>
+    {% for match in matches %}
+        <h2>{{ match.player1 }} {{ match.player2 }}</h2>
+    {% endfor %}
+</body>
+</html>

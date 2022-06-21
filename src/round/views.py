@@ -1,3 +1,17 @@
-from django.shortcuts import render
+from django.views.generic import ListView, CreateView, UpdateView
+from round.models import Round
 
-# Create your views here.
+
+class RoundView(ListView):
+	model = Round
+	context_object_name = "rounds"
+
+
+class RoundCreate(CreateView):
+	model = Round
+	fields = "__all__"
+
+
+class RoundUpdate(UpdateView):
+	model = Round
+	fields = "__all__"
