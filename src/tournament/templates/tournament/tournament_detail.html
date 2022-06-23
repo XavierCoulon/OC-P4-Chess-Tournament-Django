@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tournoi Détail</title>
+</head>
+<body>
+    <h2>Tournoi </h2>
+        <p>{{ tournament.name }}</p>
+        <p>Lieu: {{ tournament.location }}</p>
+        <p> <a href="{% url 'tournaments:update' pk=tournament.pk %}">Modifier le tournoi</a></p>
+        <p> <a href="{% url 'tournaments:rounds' pk=tournament.pk %}">Lister les rounds</a></p>
+        <p> <a href="#">Résulter le dernier round</a></p>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Joueur recherche</title>
+</head>
+<body>
+    <h2>Joueur </h2>
+         <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Rechercher">
+        </form>
+</body>
+</html>

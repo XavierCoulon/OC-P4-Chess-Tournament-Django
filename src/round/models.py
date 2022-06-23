@@ -4,9 +4,9 @@ from django.urls import reverse
 
 
 class Round(models.Model):
-	name = models.CharField(unique=True, max_length=128, blank=False)
-	start_date = models.DateField(blank=False)
-	end_date = models.DateField(blank=False)
+	name = models.CharField(max_length=128, blank=False)
+	start_date = models.DateField(null=True, blank=True)
+	end_date = models.DateField(null=True, blank=True)
 	tournament = models.ForeignKey(to=Tournament, on_delete=models.CASCADE)
 
 	class Meta:
@@ -17,3 +17,12 @@ class Round(models.Model):
 
 	def __str__(self):
 		return self.name
+
+	@staticmethod
+	def create(tournament):
+		try:
+			new_round = Round(name="Round 1", tournament=tournament)
+			new_round.save()
+		except ValueError:
+			print("Erreur")
+

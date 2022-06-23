@@ -16,7 +16,7 @@ class Player(models.Model):
 	description = models.CharField(unique=True, max_length=128, blank=False)
 
 	def get_absolute_url(self):
-		return reverse("players:home")
+		return reverse("players:menu")
 
 	def __str__(self):
 		return self.first_name

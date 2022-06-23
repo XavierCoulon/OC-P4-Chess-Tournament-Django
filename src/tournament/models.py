@@ -18,7 +18,8 @@ class Tournament(models.Model):
 	player = models.ManyToManyField(to=Player, related_name="player", blank=True)
 
 	def get_absolute_url(self):
-		return reverse("tournaments:home")
+		return reverse("tournaments:menu")
 
 	def __str__(self):
 		return self.name
+
