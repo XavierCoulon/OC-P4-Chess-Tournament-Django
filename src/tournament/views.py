@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from tournament.models import Tournament
+from match.models import Match
 from tournament.forms import TournamentSearch
 
 
@@ -39,3 +40,8 @@ def search(request):
 	else:
 		form = TournamentSearch()
 	return render(request, "tournament/tournament_search.html", {"form": form})
+
+
+def matches_list(request, round_id):
+	matches = Match.objects.filter(round_id=round_id)
+	return render(request, "tournament/tournament_matches.html", {"matches": matches})

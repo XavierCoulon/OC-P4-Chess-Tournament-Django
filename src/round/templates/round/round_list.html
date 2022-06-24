@@ -7,7 +7,9 @@
 <body>
     <h1>Affichage Rounds</h1>
     {% for round in rounds %}
-    <p>{{ round.name }} {{ round.tournament }}</p>
+    <p>{{ round.name }} <a href="{% url 'rounds:update' pk=round.pk %}">Modifier</a>
+    <a href="{% url 'rounds:detail' pk=round.pk %}">Détail</a>
+    </p>
     {% endfor %}
 </body>
 </html>

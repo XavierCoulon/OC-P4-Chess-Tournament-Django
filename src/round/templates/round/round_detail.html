@@ -6,7 +6,7 @@
 </head>
 <body>
     <h2>Round </h2>
-        <p>{{ round.name }}</p>
-        <p>Date: {{ round.start_date }}</p>
+        <p>{{ round.name }} Date: {{ round.start_date }}</p>
+        <p><a href="{% url 'rounds:matches' pk=round.pk %}">Lister les matches</a></p>
 </body>
 </html>

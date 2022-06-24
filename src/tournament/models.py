@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 
 from player.models import Player
+from round.models import Round
 
 
 class GameType(models.Model):
@@ -22,4 +23,9 @@ class Tournament(models.Model):
 
 	def __str__(self):
 		return self.name
+
+	def create_round(self):
+		round = Round(tournament_id=self.pk)
+		print(round)
+
 
