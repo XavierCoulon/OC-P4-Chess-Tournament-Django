@@ -17,12 +17,3 @@ class Round(models.Model):
 
 	def __str__(self):
 		return self.name
-
-	@staticmethod
-	def create(tournament):
-		try:
-			new_round = Round(name="Round 1", tournament=tournament)
-			new_round.save()
-		except ValueError:
-			print("Erreur")
-

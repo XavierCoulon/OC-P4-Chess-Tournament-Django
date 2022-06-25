@@ -1,5 +1,5 @@
-from django.urls import path, include
-from tournament.views import TournamentView, TournamentCreate, TournamentUpdate, TournamentDetail, search, menu, matches_list
+from django.urls import path
+from tournament.views import TournamentView, TournamentCreate, TournamentUpdate, TournamentDetail, search, menu, create_round
 from round.views import RoundList
 
 app_name = "tournaments"
@@ -13,9 +13,7 @@ urlpatterns = [
 
 	path('search/', search, name="search"),
 	path('<pk>/round/', RoundList.as_view(), name="rounds"),
-
-
-
+	path('<pk>/create_round/', create_round, name="create_round"),
 
 	# path('<pk>/rounds/<round_id>/', matches_list, name="matches"),
 	# path('<pk>/matches', matches_list, name="matches")

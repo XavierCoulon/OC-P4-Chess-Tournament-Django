@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.contrib import messages
+
 from tournament.models import Tournament
-from match.models import Match
 from tournament.forms import TournamentSearch
+from chess.constants import MAX_ROUNDS
 
 
 def menu(request):
@@ -42,6 +44,11 @@ def search(request):
 	return render(request, "tournament/tournament_search.html", {"form": form})
 
 
-def matches_list(request, round_id):
-	matches = Match.objects.filter(round_id=round_id)
-	return render(request, "tournament/tournament_matches.html", {"matches": matches})
+def create_round(request, pk):
+	tournament = Tournament.objects.get(pk=pk)
+	new_round = tournament.create_round()
+	if new_round:
+		return redirect("rounds:detail", pk=new_round)
+	else:
+		messages.warning(request, f"Maximum de {MAX_ROUNDS} rounds atteint!")
+		return redirect("tournaments:detail", pk=pk)

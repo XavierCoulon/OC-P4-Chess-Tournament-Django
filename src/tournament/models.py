@@ -4,6 +4,7 @@ from django.urls import reverse
 
 from player.models import Player
 from round.models import Round
+from chess.constants import MAX_ROUNDS
 
 
 class GameType(models.Model):
@@ -25,7 +26,12 @@ class Tournament(models.Model):
 		return self.name
 
 	def create_round(self):
-		round = Round(tournament_id=self.pk)
-		print(round)
+		rounds = Round.objects.filter(tournament_id=self.pk)
+		if len(rounds) < MAX_ROUNDS:
+			new_round = Round(name=f"Round {len(rounds) + 1}", tournament=self)
+			new_round.save()
+			return new_round.pk
+		else:
+			return None
 
 
