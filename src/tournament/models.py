@@ -27,11 +27,16 @@ class Tournament(models.Model):
 
 	def create_round(self):
 		rounds = Round.objects.filter(tournament_id=self.pk)
-		if len(rounds) < MAX_ROUNDS:
+		print(rounds.order_by('-id')[0])
+		if not rounds.order_by('-id')[0].is_resulted() or len(rounds) >= MAX_ROUNDS:
+			return None
+		else:
 			new_round = Round(name=f"Round {len(rounds) + 1}", tournament=self)
 			new_round.save()
 			return new_round.pk
-		else:
-			return None
+
+	def number_rounds(self):
+		return len(Round.objects.filter(tournament_id=self.pk))
+
 
 

@@ -50,5 +50,5 @@ def create_round(request, pk):
 	if new_round:
 		return redirect("rounds:detail", pk=new_round)
 	else:
-		messages.warning(request, f"Maximum de {MAX_ROUNDS} rounds atteint!")
+		messages.warning(request, f"Maximum de {MAX_ROUNDS} rounds atteint ou dernier round non résulté!")
 		return redirect("tournaments:detail", pk=pk)
