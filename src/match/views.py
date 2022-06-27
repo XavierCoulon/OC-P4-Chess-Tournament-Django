@@ -15,6 +15,7 @@ class MatchCreate(CreateView):
 	fields = "__all__"
 
 
-class MatchUpdate(UpdateView):
+class MatchResult(UpdateView):
 	model = Match
-	fields = "__all__"
+	template_name = "match/match_result_form.html"
+	fields = ["player1_score", "player2_score"]

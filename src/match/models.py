@@ -10,4 +10,4 @@ class Match(models.Model):
 	player2_score = models.FloatField()
 
 	def get_absolute_url(self):
-		return reverse("matches:home")
+		return reverse("rounds:detail", kwargs={"pk": self.round_id})

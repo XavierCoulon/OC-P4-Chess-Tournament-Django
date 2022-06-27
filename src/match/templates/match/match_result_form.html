@@ -5,11 +5,11 @@
     <title>Mise à jour Match</title>
 </head>
 <body>
-    <h2>Modification Match</h2>
+    <h2>Résulter Match</h2>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Modifier">
+            <p> {{ form }} </p>
+            <input type="submit" value="Enregistrer">
         </form>
 </body>
 </html>

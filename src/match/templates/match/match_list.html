@@ -7,7 +7,9 @@
 <body>
     <h1>Affichage Matches</h1>
     {% for match in matches %}
-        <h2>{{ match.player1 }} {{ match.player2 }}</h2>
+        <p>{{ match.player1 }} vs {{ match.player2 }}  ({{ match.player1_score }}:{{ match.player2_score }})
+        <a href="{% url 'matches:result' pk=match.pk %}">Résulter</a>
+        </p>
     {% endfor %}
 </body>
 </html>

@@ -24,6 +24,3 @@ class RoundCreate(CreateView):
 class RoundUpdate(UpdateView):
 	model = Round
 	fields = "__all__"
-
-	def get_queryset(self, *args, **kwargs):
-		return Round.objects.filter(tournament_id=self.kwargs.get("pk"))
